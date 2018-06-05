@@ -1,6 +1,3 @@
-# export http_proxy=http://6b729e9610874674ae66c2b41cf97499:810HNpDSAdlfe8hiHYIo@srv2.telegram.online:1080
-# export https_proxy=$http_proxy
-
 # frozen_string_literal: true
 
 require 'telegram/bot'
