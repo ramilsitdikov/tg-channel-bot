@@ -1,1 +1,1 @@
-worker: bundle exec ruby ./bot.rb
+bot: ruby bot.rb

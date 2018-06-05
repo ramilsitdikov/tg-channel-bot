@@ -3,11 +3,9 @@
 
 # frozen_string_literal: true
 
-require 'byebug'
-require 'rubygems'
 require 'telegram/bot'
 
-token = '455987284:AAEudokP92LmJqJWlavEaX-XXzEfXOIQE7U'
+token = '569464007:AAHsH_xhwHmEt_fn72V6Op9W6R-0stx9SGo'
 
 Telegram::Bot::Client.run(token) do |bot|
 
