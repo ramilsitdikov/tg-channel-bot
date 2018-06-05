@@ -10,7 +10,6 @@ require 'telegram/bot'
 token = '455987284:AAEudokP92LmJqJWlavEaX-XXzEfXOIQE7U'
 
 Telegram::Bot::Client.run(token) do |bot|
-  byebug
 
   bot.listen do |message|
     case message.text
