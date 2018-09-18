@@ -1,11 +1,9 @@
 # frozen_string_literal: true
-
-require 'telegram/bot'
+require_relative 'application'
 
 token = ENV['TELEGRAM_BOT_TOKEN']
 
 Telegram::Bot::Client.run(token) do |bot|
-
   bot.listen do |message|
     case message.text
     when '/start'
