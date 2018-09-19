@@ -7,6 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'vkontakte_api', '~> 1.4'
-gem 'byebug'
+gem 'telegram-bot-ruby'
 
+gem 'byebug', groups: %w(development test)
 gem 'dotenv-rails', groups: %w(development test)
