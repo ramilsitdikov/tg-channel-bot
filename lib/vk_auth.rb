@@ -23,7 +23,4 @@ class VkAuth
       @vk = VkontakteApi::Client.new(@vk.token)
     end
   end
-
-
-
 end

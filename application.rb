@@ -1,4 +1,4 @@
 Bundler.require(*Rails.groups)
-load 'lib'
+# load 'lib'
 
 require 'telegram/bot'
