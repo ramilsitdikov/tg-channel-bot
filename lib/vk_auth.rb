@@ -3,7 +3,7 @@ class VkAuth
     def authorization_url
       srand
       state ||= Digest::MD5.hexdigest(rand.to_s)
-      @vk_url = VkontakteApi.authorization_url(
+      VkontakteApi.authorization_url(
         scope: %i(
           friends
           groups

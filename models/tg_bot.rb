@@ -1,7 +1,10 @@
 class TgBot
   attr_reader :bot
+  attr_accessor :state
+
   def initialize(bot)
     @bot = bot
+    @state = :init
   end
 
   def process_message
@@ -10,16 +13,26 @@ class TgBot
 
       case message.text
       when '/start'
-        text = "id: #{message.from.id}, first_name: #{message.from.first_name}"
-        bot.api.send_message(chat_id: chat_id, text: text)
+        text = "Hello, #{message.from.first_name}!"
+        send_message(chat_id, text)
       when '/message'
         text = "message: #{message.inspect}"
-        bot.api.send_message(chat_id: chat_id, text: text)
+        send_message(chat_id, text)
+      when '/login_vk'
+        text = VkAuth.authorization_url
+        state = :auth_start
+        send_message(chat_id, text)
       when '/end'
-        bot.api.send_message(chat_id: chat_id, text: "Bye, #{message.from.first_name}!")
+        send_message(chat_id, "Bye, #{message.from.first_name}!")
       else
-        bot.api.send_message(chat_id: chat_id, text: "I don't understand you.")
+        send_message(chat_id, 'I do not understand you.')
       end
     end
   end
+
+  private
+
+    def send_message(chat_id, text)
+      bot.api.send_message(chat_id: chat_id, text: text)
+    end
 end
