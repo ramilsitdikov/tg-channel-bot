@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: vk_bot_dev
+  pool: 5
+  host: localhost
+  timeout: 5000
