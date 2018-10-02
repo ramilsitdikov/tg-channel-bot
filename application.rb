@@ -1,15 +1,18 @@
+require 'aasm'
+require 'active_record'
+require 'dotenv'
 require 'telegram/bot'
 require 'vkontakte_api'
 
-require 'active_record'
-require 'dotenv'
+Dir.glob('./config/*.rb').each { |r| load r}
 
-require_relative 'models/tg_bot'
-require_relative 'lib/vk_auth'
+Dir.glob('./lib/models/*.rb').each { |r| load r}
+Dir.glob('./lib/services/*.rb').each { |r| load r}
+Dir.glob('./lib/state_machines/*.rb').each { |r| load r}
 
-def db_configuration
-  db_configuration_file = File.join(File.expand_path('..', __FILE__), 'db', 'config.yml')
-  YAML.load(File.read(db_configuration_file))
+def db_config
+  db_config_file = File.join(File.expand_path('..', __FILE__), 'db', 'config.yml')
+  YAML.load(File.read(db_config_file))
 end
 
-ActiveRecord::Base.establish_connection(db_configuration['development'])
+ActiveRecord::Base.establish_connection(db_config['development'])
