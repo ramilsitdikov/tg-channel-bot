@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.12.3)
+      concurrent-ruby (~> 1.0)
     actionpack (5.2.1)
       actionview (= 5.2.1)
       activesupport (= 5.2.1)
@@ -121,6 +123,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   activerecord (~> 5.2.1)
   byebug
   dotenv-rails

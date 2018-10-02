@@ -6,13 +6,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'aasm'
+gem 'activerecord', '~> 5.2.1'
+gem 'dotenv-rails'
 gem 'pg'
 gem 'standalone_migrations'
-gem 'activerecord', '~> 5.2.1'
-gem 'vkontakte_api'
 gem 'telegram-bot-ruby'
-gem 'dotenv-rails'
-
+gem 'vkontakte_api'
 
 group :test, :development do
   gem 'byebug'
