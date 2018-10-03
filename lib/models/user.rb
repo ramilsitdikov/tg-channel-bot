@@ -1,7 +1,7 @@
 require_relative 'application_record'
 
 class User < ApplicationRecord
-  extend ActiveSupport::Concern
+  # extend ActiveSupport::Concern
   include AASM
 
   aasm column: :state, no_direct_assignment: true do

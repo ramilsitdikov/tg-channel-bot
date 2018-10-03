@@ -10,9 +10,17 @@ Dir.glob('./lib/models/*.rb').each { |r| load r}
 Dir.glob('./lib/services/*.rb').each { |r| load r}
 Dir.glob('./lib/state_machines/*.rb').each { |r| load r}
 
-def db_config
-  db_config_file = File.join(File.expand_path('..', __FILE__), 'db', 'config.yml')
-  YAML.load(File.read(db_config_file))
+def app_env
+  @app_env ||= ENV['APP_ENV'] || 'development'
 end
 
-ActiveRecord::Base.establish_connection(db_config['development'])
+def db_config
+  app_env == 'production' ?
+    {url: ENV['DATABASE_URL'], adapter: 'postgresql'} :
+    YAML.load(
+      File.read(
+        File.join(
+          File.expand_path('..', __FILE__), 'db', 'config.yml')))[app_env]
+end
+
+ActiveRecord::Base.establish_connection(db_config)
